@@ -13,11 +13,32 @@
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-scripts": "3.4.3",
-    "typescript": "~3.7.2"
+    "typescript": "~3.7.2",
+    "classnames": "^2.2.6",
+    "lodash": "^4.17.19",
+    "omit.js": "^2.0.2",
+    "react-is": "^16.13.1",
+    "validator": "^13.1.1"
+  },
+  "devDependencies": {
+    "@types/classnames": "^2.2.10",
+    "@types/lodash": "^4.14.158",
+    "@types/react-is": "^16.7.1",
+    "@types/validator": "^13.1.0",
+    "autoprefixer": "^9.8.6",
+    "npm-run-all": "^4.1.5",
+    "postcss-cli": "^7.1.1",
+    "postcss-import": "^12.0.1",
+    "tailwindcss": "^1.6.0",
+    "tailwind-caret-color": "^1.1.0"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
+    "watch:css": "postcss src/styles/tailwind.css -o public/static/css/base.css -w",
+    "build:css": "postcss src/styles/tailwind.css -o build/static/css/base.css",
+    "start": "npm-run-all -p watch:css start-js",
+    "build": "npm-run-all build-js build:css",
+    "start-js": "react-scripts start",
+    "build-js": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
